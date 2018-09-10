@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Initial Test
-tags: [ miscellaneous,  maths_tut]
+title: Introducing Lanyon
+tags: [ miscellaneous,  ]
 ---
 
 Hello, this is just a bit of text to test whether maths works within the markdown - also need to test whether code rendering works nicely
