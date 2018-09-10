@@ -8,11 +8,10 @@ Hello, this is just a bit of text to test whether maths works within the markdow
 
 Code:
 
-{% highlight bash %}
-$VAR1 = {
-          'al.pha' => 'a',
-          'beta' => 'b'
-        };
+{% highlight python %}
+import os
+for i in range(10):
+  print i
 {% endhighlight %}
 
 Maths:
