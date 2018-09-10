@@ -8,7 +8,7 @@ Hello, this is just a bit of text to test whether maths works within the markdow
 
 Code:
 
-(% highlight pythong %}
+(% highlight python %}
 import matplotlib.pyplot as plt
 import numpy as np
 import os
