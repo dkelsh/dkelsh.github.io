@@ -16,4 +16,4 @@ for i in range(10):
 
 Maths:
 
-%% \mu = \frac{1}{N} \sum_{i}^{N} x_i $$
+$$ \mu = \frac{1}{N} \sum_{i}^{N} x_i $$
