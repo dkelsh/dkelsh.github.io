@@ -14,7 +14,7 @@ Above is an image of a basic nn, annotated.
 
 Above is the same pic but with numbers
 
-![basic_nn_calc_h1](/images/basic_nn/basic_nn_calc_h1.png)
+![basic_nn_calc_h1](/images/basic_nn/basic_nn_calc_h1_updated.png)
 
 First we calculate h1
 
