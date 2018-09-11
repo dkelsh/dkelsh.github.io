@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tutorial: Introduction to Basic Neural Networks
-tags: [ tutorial,  neural_networks]
+tags: [ tutorial, neural_networks]
 ---
 
 Welcome to this tutorial on neural networks:
