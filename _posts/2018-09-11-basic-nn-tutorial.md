@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tutorial - An Introduction to Neural Networks
+title: Tutorial : An Introduction to Neural Networks
 tags: [ tutorial, neural_networks ]
 ---
 
