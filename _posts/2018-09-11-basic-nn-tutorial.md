@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Tutorial / An Introduction to Neural Networks
+title: Basic Introduction to Neural Networks
 tags: [ tutorial, neural_networks ]
 ---
 
 Welcome to this tutorial on neural networks:
 
 ![basic_nn_annotated](/images/basic_nn/basic_nn_annotated.png)
-
+An
 Above is an image of a basic nn, annotated.
 
 ![basic_nn_numbers](/images/basic_nn/basic_nn_numbers.png)
