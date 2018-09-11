@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Tutorial: Introduction to Basic Neural Networks
-tags: [tutorial, neural_networks]
+title: Test
+tags: [ tutorial,  ]
 ---
 
+Data science
 Welcome to this tutorial on neural networks:
 
 ![basic_nn_annotated](/images/basic_nn/basic_nn_annotated.png)
