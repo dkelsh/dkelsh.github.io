@@ -35,9 +35,7 @@ This image shows a more indepth view of how h1 will be calculated:
 Calculating *total net input*:
 
 >$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $
->
 >$ net_{h_{1}} = w^{1}_{11} i_1 + w^{1}_{21} i_2 + b_1 $
->
 >$ net_{h_{1}} = 0.15 * 0.05 + 0.20 * 0.10 + 0.35 = 0.3775 $
 
 Calculating *output*:
@@ -68,7 +66,7 @@ Calculating *output*:
 
 **To Calculate o1:**
 
-In order to calculate the values past the first hidden layer, we must use the values generated as outputs from the previous layer, namely: $out_{h1}$ and $out_{h2}$
+In order to calculate the values past the first hidden layer, we must use the values generated as outputs from the previous layer, namely: $ out_{h1} $ and $ out_{h2} $
 
 Calculating *total net input*:
 
@@ -172,7 +170,7 @@ In order to decrease the error, we subtract this value, multiplied by $\eta$ (th
 >
 >$ w^{2+}_{11} = 0.40 - 0.5 * 0.0821671041 = 0.35891648 $
 
-**Updating ${\bf w^{2}_{21}}$:**
+**Updating $ {\bf w^{2}_{21}} $:**
 
 As we now know the value of $\delta_{o1}$ we can find $\frac{\partial E_{total}}{\partial w^{2}_{21}}$ easily:
 
@@ -188,7 +186,7 @@ Now we have this value we can update the weight:
 >
 >$ w^{2+}_{21} = 0.45 - 0.5 * 0.082667628 = 0.408666186 $
 
-**Updating ${\bf w^{2}_{12}}$:**
+**Updating $ {\bf w^{2}_{12}} $:**
 
 Once again we need to go through the process of the chain rule, but now we know the derivatives this will be a lot easier:
 
@@ -208,7 +206,7 @@ From here we can easily calculate the new weight:
 >
 >$ w^{2+}_{12} = 0.50 - 0.5 * -0.022602541 = 0.51130127 $
 
-**Updating ${\bf w^{2}_{22}}$:**
+**Updating $ {\bf w^{2}_{22}} $:**
 
 As we now know $\delta_{o2}$ this will be very fast:
 
@@ -222,7 +220,7 @@ As we now know $\delta_{o2}$ this will be very fast:
 
 ### The Hidden Layer:
 
-**Updating ${\bf w^{1}_{11}}$:**
+**Updating $ {\bf w^{1}_{11}} $:**
 
 Calculating the updated weights in the hidden layer is a little more difficult as we need to take more factors into account - however, the approach is very much the same.
 
@@ -277,7 +275,7 @@ To update the weight:
 >
 >$ w^{1+}_{11} = 0.15 - 0.5 * 0.000438568 = 0.149780716 $
 
-**Updating ${\bf w^{1}_{21}}$:**
+**Updating $ {\bf w^{1}_{21}} $:**
 
 >$ \frac{\partial E_{total}}{\partial w^{1}_{21}} = \delta_{h1} \frac{\partial net_{h1}}{\partial w^{1}_{21}} $
 >
@@ -291,7 +289,7 @@ To update the weight:
 >
 >$ w^{1+}_{21} = 0.20 - 0.5 * 0.0008771354 = 0.1995614323 $
 
-**Updating ${\bf w^{1}_{12}}$:**
+**Updating $ {\bf w^{1}_{12}} $:**
 
 >$ \frac{\partial E_{total}}{\partial w^{1}_{12}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w^{1}_{11}} $
 
@@ -329,7 +327,7 @@ To update the weight:
 >
 >$ w^{1+}_{12} = 0.25 - 0.5 * 0.0004977127 = 0.2497511436 $
 
-**Updating ${\bf w^{1}_{22}}$:**
+**Updating $ {\bf w^{1}_{22}} $:**
 
 >$ \frac{\partial E_{total}}{\partial w^{1}_{22}} = \delta_{h2} \frac{\partial net_{h1}}{\partial w^{1}_{22}} $
 >
