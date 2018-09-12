@@ -122,7 +122,7 @@ First of all we need to figure out how much a change in $w^{2}_{11}$ affects the
 
 If we look at the diagram below it may be easier to see what is happening:
 
-![basic_nn_annotated](/tut_basic_nn_calc_backprop_.png)
+![basic_nn_annotated](/images/basic_nn/tut_basic_nn_calc_backprop_.png)
 
 By using the chain rule:
 
