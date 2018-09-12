@@ -36,7 +36,7 @@ Calculating *total net input*:
 
 >$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $
 >
->$ net_{h_{1}} = w^{1)11 i_1 + w^{1}21 i_2 + b_1 $
+>$ net_{h_{1}} = w^{1}11 i_1 + w^{1}21 i_2 + b_1 $
 >
 >$ net_{h_{1}} = 0.15 * 0.05 + 0.20 * 0.10 + 0.35 = 0.3775 $
 
