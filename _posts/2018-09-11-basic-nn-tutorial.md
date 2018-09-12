@@ -251,14 +251,17 @@ $ \frac{\partial E_{o2}}{\partial out_{h1}} = -\left(ideal_{o2} - out_{o2}\right
 
 $ \frac{\partial E_{o2}}{\partial out_{h1}} = -(0.99 - 0.772928465) * 0.772928465(1 - 0.772928465) * 0.5 = -0.019049118 $
 
+<br>
 
 $ \frac{\partial E_{total}}{\partial out_{h1}} = 0.055399425 - 0.019049118 = 0.036350307 $
 
+<br>
 
 $ \frac{\partial out_{h1}}{\partial net_{h1}} = out_{h1}(1 - out_{h1}) = 0.593269992(1 - 0.593269992) = 0.241300709 $
 
 $ \frac{\partial net_{h1}}{\partial w_{11}^{1}} = i_1 = 0.05 $
 
+<br>
 
 $ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \frac{\partial E_{total}}{\partial out_{h1}} \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w_{11}^{1}}  = 0.036350307 * 0.241300709 * 0.05 = 0.000438568 $
 
