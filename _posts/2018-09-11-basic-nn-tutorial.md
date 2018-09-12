@@ -17,7 +17,7 @@ In order to have some numbers to work with, here are the initial weights, the bi
 ![basic_nn_annotated](/images/basic_nn/tut_basic_nn_numbers.png)
 
 ## The forward pass:
-<br>
+
 In the forward pass we predict the outputs based on the current architecture's weights and biases - in order to do this we need to work through the network in a systematic approach.
 
 First we calculate the *total net input* to each hidden layer neuron, we then apply an activation function to *squash* the input - this process is repeated for each neuron upto and including the output layer.
@@ -54,7 +54,7 @@ In order to calculate the output, we have used the 'sigmoid' activation function
 
 Calculating *total net input*:
 
->$ net_{h_{2}} = w^{1}_{12} i_1 + w^{1}_{22} i_2 + b_2 $
+>$ net_{h_{2}} = w_{12}^{1} i_1 + w_{22}^{1} i_2 + b_2 $
 >
 >$ net_{h_{2}} = 0.25 * 0.05 + 0.30 * 0.10 + 0.35 = 0.3925 $
 
@@ -72,7 +72,7 @@ In order to calculate the values past the first hidden layer, we must use the va
 
 Calculating *total net input*:
 
->$ net_{o_{1}} = w^{2}_{11} out_{h_{1}} + w^{2}_{21} out_{h_{2}} + b_3 $
+>$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21}^{2} out_{h_{2}} + b_3 $
 >
 >$ net_{o_{1}} = 0.40 * 0.593269992 + 0.45 * 0.596884378 + 0.35 = 1.105905967 $
 
@@ -86,7 +86,7 @@ Calculating *output*:
 
 Calculating *total net input*:
 
->$ net_{o_{2}} = w^{2}_{12} out_{h_{1}} + w^{2}_{22} out_{h_{2}} + b_3 $
+>$ net_{o_{2}} = w_{12}^{2} out_{h_{1}} + w_{22}^{2} out_{h_{2}} + b_3 $
 >
 >$ net_{o_{2}} = 0.50 * 0.593269992 + 0.45 * 0.596884378 + 0.55 = 1.224921404 $
 
@@ -114,9 +114,9 @@ The backwards pass is known as backpropogation, the aim is to update all of the 
 
 ### The Output Layer:
 
-**Updating $ {\bf w^{2}_{11}} $:**
+**Updating $ {\bf w_{11}^{2}} $:**
 
-First of all we need to figure out how much a change in $w^{2}_{11}$ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w^{2}_{11}} $ 
+First of all we need to figure out how much a change in $ w{11}^{2}_ $ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w_{11}^{2}} $ 
 
 If we look at the diagram below it may be easier to see what is happening:
 
@@ -124,11 +124,11 @@ If we look at the diagram below it may be easier to see what is happening:
 
 By using the chain rule:
 
->$ \frac{\partial E_{total}}{\partial w^{2}_{11}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w^{2}_{11}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
 
 The red lines show the steps we make in order to get from our error to the weight.
 
-How much does $E_{total}$ changes based on $out_{o1}$:
+How much does $ E_{total} $ changes based on $ out_{o1} $:
 
 >$ E_{total} = \frac {1}{2}(ideal_{o1} - out{o1})^2 + \frac {1}{2}(ideal_{o2} - out{o2})^2 $
 >
@@ -136,7 +136,7 @@ How much does $E_{total}$ changes based on $out_{o1}$:
 >
 >$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $
 
-How much does $out_{o1}$ changes with $net_{o1}$:
+How much does $ out_{o1} $ changes with $ net_{o1} $:
 
 >$ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
 >
@@ -144,51 +144,51 @@ How much does $out_{o1}$ changes with $net_{o1}$:
 >
 >$ \frac{\partial out_{o1}}{\partial net_{o1}} = 0.75136507(1 - 0.75136507) = 0.186815602 $
 
-How much does $net_{o1}$ change with $w^{2}_{11}$:
+How much does $ net_{o1} $ change with $ w_{11}^{2} $:
 
->$ net_{o_{1}} = w^{2}_{11} out_{h_{1}} + w^{2}_{21} out_{h_{2}} + b_3 $
+>$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21} out_{h_{2}} + b_3 $
 >
->$ \frac{\partial net_{o1}}{\partial w^{2}_{11}} = out_{h_{1}} $
+>$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = out_{h_{1}} $
 >
->$ \frac{\partial net_{o1}}{\partial w^{2}_{11}} = 0.593269992 $
+>$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = 0.593269992 $
 
 We can finally combine all of these terms:
 
->$ \frac{\partial E_{total}}{\partial w^{2}_{11}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w^{2}_{11}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{11}} = - \left( ideal_{o1} - out{o1} \right) out_{o1} \left( 1 - out_{o1} \right) out_{h_{1}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = - \left( ideal_{o1} - out{o1} \right) out_{o1} \left( 1 - out_{o1} \right) out_{h_{1}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{11}} = 0.74136507 * 0.186815602 * 0.593269992 = 0.0821671041$
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = 0.74136507 * 0.186815602 * 0.593269992 = 0.0821671041$
 
 In order to speed up the process we can assign:
 
->$ \delta_{o1} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \therefore \frac{\partial E_{total}}{\partial w^{2}_{j1}} = \delta_{o1} \frac{\partial net_{o1}}{\partial w^{2}_{j1}} $
+>$ \delta_{o1} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \therefore \frac{\partial E_{total}}{\partial w_{j1}^{2}} = \delta_{o1} \frac{\partial net_{o1}}{\partial w_{j1}^{2}} $
 >
 >$ \delta_{o1} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} = 0.74136507 * 0.186815602 = 0.13849856185 $
 
-In order to decrease the error, we subtract this value, multiplied by $\eta$ (the learning rate), from the previous weight. For the sake of this exercise we will set $\eta$ = 0.5
+In order to decrease the error, we subtract this value, multiplied by $ \eta $ (the learning rate), from the previous weight. For the sake of this exercise we will set $ \eta $ = 0.5
 
->$ w^{2+}_{11} = w^{2}_{11} - \eta \frac{\partial E_{total}}{\partial w^{2}_{11}} $
+>$ w_{11}^{2+} = w_{11}^{2} - \eta \frac{\partial E_{total}}{\partial w_{11}^{2}} $
 >
->$ w^{2+}_{11} = 0.40 - 0.5 * 0.0821671041 = 0.35891648 $
+>$ w_{11}^{2+} = 0.40 - 0.5 * 0.0821671041 = 0.35891648 $
 
-**Updating $ {\bf w^{2}_{21}} $:**
+**Updating $ {\bf w_{21}^{2}} $:**
 
-As we now know the value of $\delta_{o1}$ we can find $\frac{\partial E_{total}}{\partial w^{2}_{21}}$ easily:
+As we now know the value of $ \delta_{o1} $ we can find $ \frac{\partial E_{total}}{\partial w_{21}^{2}} $ easily:
 
->$ \frac{\partial E_{total}}{\partial w^{2}_{21}} = \delta_{o1} \frac{\partial net_{o1}}{\partial w^{2}_{21}} $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{2}} = \delta_{o1} \frac{\partial net_{o1}}{\partial w_{21}^{2}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{21}} = \delta_{o1} * out_{h_{2}} $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{2}} = \delta_{o1} * out_{h_{2}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{21}} = 0.13849856185 * 0.596884378  = 0.082667628 $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{2}} = 0.13849856185 * 0.596884378  = 0.082667628 $
 
 Now we have this value we can update the weight:
 
->$ w^{2+}_{21} = w^{2}_{21} - \eta \frac{\partial E_{total}}{\partial w^{2}_{21}} $
+>$ w_{21}^{2+} = w_{21}^{2} - \eta \frac{\partial E_{total}}{\partial w_{21}^{2}} $
 >
->$ w^{2+}_{21} = 0.45 - 0.5 * 0.082667628 = 0.408666186 $
+>$ w_{21}^{2+} = 0.45 - 0.5 * 0.082667628 = 0.408666186 $
 
-**Updating $ {\bf w^{2}_{12}} $:**
+**Updating $ {\bf w_{12}^{2}} $:**
 
 Once again we need to go through the process of the chain rule, but now we know the derivatives this will be a lot easier:
 
@@ -200,43 +200,44 @@ Once again we need to go through the process of the chain rule, but now we know 
 
 From here we can easily calculate the new weight:
 
->$ \frac{\partial E_{total}}{\partial w^{2}_{12}} = \delta_{o2} \frac{\partial net_{o2}}{\partial w^{2}_{12}} $
+>$ \frac{\partial E_{total}}{\partial w_{12}^{2}} = \delta_{o2} \frac{\partial net_{o2}}{\partial 
+_{12}{2}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{12}} = \delta_{o2} out_{h_{1}} = -0.03809823661 * 0.593269992 = -0.022602541 $
+>$ \frac{\partial E_{total}}{\partial w_{12}^{2}} = \delta_{o2} out_{h_{1}} = -0.03809823661 * 0.593269992 = -0.022602541 $
 >
->$ w^{2+}_{12} = w^{2}_{12} - \eta \frac{\partial E_{total}}{\partial w^{2}_{12}} $
+>$ w_{12}^{2+} = w_{12}^{2} - \eta \frac{\partial E_{total}}{\partial w_{12}^{2}} $
 >
->$ w^{2+}_{12} = 0.50 - 0.5 * -0.022602541 = 0.51130127 $
+>$ w_{12}^{2+} = 0.50 - 0.5 * -0.022602541 = 0.51130127 $
 
-**Updating $ {\bf w^{2}_{22}} $:**
+**Updating $ {\bf w_{22}^{2}} $:**
 
-As we now know $\delta_{o2}$ this will be very fast:
+As we now know $ \delta_{o2} $ this will be very fast:
 
->$ \frac{\partial E_{total}}{\partial w^{2}_{22}} = \delta_{o2} \frac{\partial net_{o2}}{\partial w^{2}_{22}} $
+>$ \frac{\partial E_{total}}{\partial w_{22}^{2}} = \delta_{o2} \frac{\partial net_{o2}}{\partial w_{22}^{2}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{2}_{22}} = \delta_{o2} out_{h_{2}} = -0.03809823661 * 0.596884378 = -0.022740242 $
+>$ \frac{\partial E_{total}}{\partial w_{22}^{2}} = \delta_{o2} out_{h_{2}} = -0.03809823661 * 0.596884378 = -0.022740242 $
 >
->$ w^{2+}_{22} = w^{2}_{22} - \eta \frac{\partial E_{total}}{\partial w^{2}_{22}} $
+>$ w_{22}^{2+} = w_{22}^{2} - \eta \frac{\partial E_{total}}{\partial w_{22}^{2}} $
 >
->$ w^{2+}_{22} = 0.55 - 0.5 * -0.022740242 = 0.561370121 $
+>$ w_{22}^{2+} = 0.55 - 0.5 * -0.022740242 = 0.561370121 $
 
 ### The Hidden Layer:
 
-**Updating $ {\bf w^{1}_{11}} $:**
+**Updating $ {\bf w_{11}^{1}} $:**
 
 Calculating the updated weights in the hidden layer is a little more difficult as we need to take more factors into account - however, the approach is very much the same.
 
-We need to figure out how much a change in $w^{1}_{11}$ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w^{1}_{11}} $ 
+We need to figure out how much a change in $ w_{11}^{1} $ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w_{11}^{1}} $ 
 
 By using the chain rule:
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{11}} = \frac{\partial E_{total}}{\partial out_{h1}} \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w^{1}_{11}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \frac{\partial E_{total}}{\partial out_{h1}} \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w_{11}^{1}} $
 
 >$ \frac{\partial E_{total}}{\partial out_{h1}} = \frac{\partial E_{o1}}{\partial out_{h1}} + \frac{\partial E_{o2}}{\partial out_{h1}} $
 >
 >>$ \frac{\partial E_{o1}}{\partial out_{h1}} = \frac{\partial E_{o1}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial out_{h1}} $
 >>
->>$ \frac{\partial E_{o1}}{\partial out_{h1}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w^{2}_{11} $
+>>$ \frac{\partial E_{o1}}{\partial out_{h1}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w_{11}^{2} $
 >>
 >>$ \frac{\partial E_{o1}}{\partial out_{h1}} = 0.74136507 * 0.186815602 * 0.4 = 0.055399425 $
 >>
@@ -244,7 +245,7 @@ By using the chain rule:
 >>
 >>$ \frac{\partial E_{o2}}{\partial out_{h1}} = \frac{\partial E_{o2}}{\partial out_{o2}} \frac{\partial out_{o2}}{\partial net_{o2}} \frac{\partial net_{o2}}{\partial out_{h1}} $
 >>
->>$ \frac{\partial E_{o2}}{\partial out_{h1}} = -\left(ideal_{o2} - out_{o2}\right) out_{o2} \left( 1 - out_{o2} \right) w^{2}_{12} $
+>>$ \frac{\partial E_{o2}}{\partial out_{h1}} = -\left(ideal_{o2} - out_{o2}\right) out_{o2} \left( 1 - out_{o2} \right) w_{12}^{2} $
 >>
 >>$ \frac{\partial E_{o2}}{\partial out_{h1}} = -(0.99 - 0.772928465) * 0.772928465(1 - 0.772928465) * 0.5 = -0.019049118 $
 
@@ -254,18 +255,18 @@ By using the chain rule:
 
 >$ \frac{\partial out_{h1}}{\partial net_{h1}} = out_{h1}(1 - out_{h1}) = 0.593269992(1 - 0.593269992) = 0.241300709 $
 >
->$ \frac{\partial net_{h1}}{\partial w^{1}_{11}} = i_1 = 0.05 $
+>$ \frac{\partial net_{h1}}{\partial w_{11}^{1}} = i_1 = 0.05 $
 
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{11}} = \frac{\partial E_{total}}{\partial out_{h1}} \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w^{1}_{11}}  = 0.036350307 * 0.241300709 * 0.05 = 0.000438568 $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \frac{\partial E_{total}}{\partial out_{h1}} \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w_{11}^{1}}  = 0.036350307 * 0.241300709 * 0.05 = 0.000438568 $
 
 This can be written in the form:
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{11}} = \left( \sum_{o} \frac{\partial E_{total}}{\partial out_{o}} \frac{\partial out_{o}}{\partial net_{o}} \frac{\partial net_{o}}{\partial out_{h1}} \right) \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w^{1}_{11}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \left( \sum_{o} \frac{\partial E_{total}}{\partial out_{o}} \frac{\partial out_{o}}{\partial net_{o}} \frac{\partial net_{o}}{\partial out_{h1}} \right) \frac{\partial out_{h1}}{\partial net_{h1}} \frac{\partial net_{h1}}{\partial w_{11}^{1}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{11}} = \left( \sum_{o} \delta_{o} \frac{\partial net_{o}}{\partial out_{h1}} \right) out_{h1}(1 - out_{h1}) i_1 $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \left( \sum_{o} \delta_{o} \frac{\partial net_{o}}{\partial out_{h1}} \right) out_{h1}(1 - out_{h1}) i_1 $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{11}} = \delta_{h1} i_1 $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \delta_{h1} i_1 $
 
 In this instance:
 
@@ -273,33 +274,33 @@ In this instance:
 
 To update the weight:
 
->$ w^{1+}_{11} = w^{1}_{11} - \eta \frac{\partial E_{total}}{\partial w^{1}_{11}} $
+>$ w_{11}^{1+} = w_{11}^{1} - \eta \frac{\partial E_{total}}{\partial w_{11}^{1}} $
 >
->$ w^{1+}_{11} = 0.15 - 0.5 * 0.000438568 = 0.149780716 $
+>$ w_{11}^{1+} = 0.15 - 0.5 * 0.000438568 = 0.149780716 $
 
-**Updating $ {\bf w^{1}_{21}} $:**
+**Updating $ {\bf w_{21}^{1}} $:**
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{21}} = \delta_{h1} \frac{\partial net_{h1}}{\partial w^{1}_{21}} $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{1}} = \delta_{h1} \frac{\partial net_{h1}}{\partial w_{21}^{1}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{21}} = \delta_{h1} i_2 $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{1}} = \delta_{h1} i_2 $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{21}} = 0.008771354 * 0.10 = 0.0008771354 $
+>$ \frac{\partial E_{total}}{\partial w_{21}^{1}} = 0.008771354 * 0.10 = 0.0008771354 $
 
 To update the weight:
 
->$ w^{1+}_{21} = w^{1}_{21} - \eta \frac{\partial E_{total}}{\partial w^{1}_{21}} $
+>$ w_{21}^{1+} = w_{21}^{1} - \eta \frac{\partial E_{total}}{\partial w_{21}^{1}} $
 >
->$ w^{1+}_{21} = 0.20 - 0.5 * 0.0008771354 = 0.1995614323 $
+>$ w_{21}^{1+} = 0.20 - 0.5 * 0.0008771354 = 0.1995614323 $
 
-**Updating $ {\bf w^{1}_{12}} $:**
+**Updating $ {\bf w_{12}^{1}} $:**
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{12}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w^{1}_{11}} $
+>$ \frac{\partial E_{total}}{\partial w_{12}^{1}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w_{11}^{1}} $
 
 >$ \frac{\partial E_{total}}{\partial out_{h2}} = \frac{\partial E_{o1}}{\partial out_{h2}} + \frac{\partial E_{o2}}{\partial out_{h2}} $
 >
 >>$ \frac{\partial E_{o1}}{\partial out_{h2}} = \frac{\partial E_{o1}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial out_{h2}} $
 >>
->>$ \frac{\partial E_{o1}}{\partial out_{h2}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w^{2}_{21} $
+>>$ \frac{\partial E_{o1}}{\partial out_{h2}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w_{21}^{2} $
 >>
 >>$ \frac{\partial E_{o1}}{\partial out_{h2}} = 0.74136507 * 0.186815602 * 0.45 = 0.0623243528 $
 >>
@@ -307,7 +308,7 @@ To update the weight:
 >>
 >>$ \frac{\partial E_{o2}}{\partial out_{h2}} = \frac{\partial E_{o2}}{\partial out_{o2}} \frac{\partial out_{o2}}{\partial net_{o2}} \frac{\partial net_{o2}}{\partial out_{h2}} $
 >>
->>$ \frac{\partial E_{o2}}{\partial out_{h2}} = -\left(ideal_{o2} - out_{o2}\right) out_{o2} \left( 1 - out_{o1} \right) w^{2}_{22} $
+>>$ \frac{\partial E_{o2}}{\partial out_{h2}} = -\left(ideal_{o2} - out_{o2}\right) out_{o2} \left( 1 - out_{o1} \right) w_{22}^{2} $
 >>
 >>$ \frac{\partial E_{o2}}{\partial out_{h2}} = -(0.99 - 0.772928465) * 0.772928465(1 - 0.772928465) * 0.55 = -0.02095403013 $
 
@@ -315,9 +316,9 @@ To update the weight:
 
 >$ \frac{\partial out_{h2}}{\partial net_{h2}} = out_{h2}(1 - out_{h2}) = 0.596884378(1 - 0.596884378) = 0.2406134173 $
 
->$ \frac{\partial net_{h2}}{\partial w^{1}_{12}} = i_1 = 0.05 $
+>$ \frac{\partial net_{h2}}{\partial w_{12}^{1}} = i_1 = 0.05 $
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{12}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w^{1}_{11}} = 0.041370322 * 0.2406134173 * 0.05 = 0.0004977127 $ 
+>$ \frac{\partial E_{total}}{\partial w_{12}^{1}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w_{11}^{1}} = 0.041370322 * 0.2406134173 * 0.05 = 0.0004977127 $ 
 
 In this instance:
 
@@ -325,22 +326,22 @@ In this instance:
 
 To update the weight:
 
->$ w^{1+}_{12} = w^{1}_{12} - \eta \frac{\partial E_{total}}{\partial w^{1}_{12}} $
+>$ w_{12}^{1+} = w_{12}^{1} - \eta \frac{\partial E_{total}}{\partial w_{12}^{1}} $
 >
->$ w^{1+}_{12} = 0.25 - 0.5 * 0.0004977127 = 0.2497511436 $
+>$ w_{12}^{1+} = 0.25 - 0.5 * 0.0004977127 = 0.2497511436 $
 
-**Updating $ {\bf w^{1}_{22}} $:**
+**Updating $ {\bf w_{22}^{1}} $:**
 
->$ \frac{\partial E_{total}}{\partial w^{1}_{22}} = \delta_{h2} \frac{\partial net_{h1}}{\partial w^{1}_{22}} $
+>$ \frac{\partial E_{total}}{\partial w_{22}^{1}} = \delta_{h2} \frac{\partial net_{h1}}{\partial w_{22}^{1}} $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{22}} = \delta_{h2} i_2 $
+>$ \frac{\partial E_{total}}{\partial w_{22}^{1}} = \delta_{h2} i_2 $
 >
->$ \frac{\partial E_{total}}{\partial w^{1}_{22}} = 0.00995425455 * 0.10 = 0.000995425455 $
+>$ \frac{\partial E_{total}}{\partial w_{22}^{1}} = 0.00995425455 * 0.10 = 0.000995425455 $
 
 To update the weight:
 
->$ w^{1+}_{22} = w^{1}_{22} - \eta \frac{\partial E_{total}}{\partial w^{1}_{22}} $
+>$ w_{22}^{1+} = w_{22}^{1} - \eta \frac{\partial E_{total}}{\partial w_{22}^{1}} $
 >
->$ w^{1+}_{21} = 0.30 - 0.5 * 0.000995425455 = 0.2995022873 $
+>$ w_{21}^{1+} = 0.30 - 0.5 * 0.000995425455 = 0.2995022873 $
 
 This working constitutes one iteration, at the end of this iteration the weights are updated to their new values and the process repeats itself - working to minimise the error. I have tried to simplify the nomenclature so that you can focus on the core concepts - once you have a good understanding of this process there is a lot you can start to do to build on this knowledge. I hope you found this post useful - I will be writing about the more advanced mathematics in due time.
