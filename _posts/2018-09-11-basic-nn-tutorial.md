@@ -114,7 +114,7 @@ The backwards pass is known as backpropogation, the aim is to update all of the 
 
 ### The Output Layer:
 
-**Updating ${\bf w^{2}_{11}}$:**
+**Updating $ {\bf w^{2}_{11}} $:**
 
 First of all we need to figure out how much a change in $w^{2}_{11}$ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w^{2}_{11}} $ 
 
