@@ -4,8 +4,6 @@ title: Basic Introduction to Neural Networks
 tags: [ tutorial, neural_networks ]
 ---
 
-## Basic Introduction to Neural Networks
-
 A neural network is a system of neurons interconnected by nodes - by providing a certain input the system can learn to output a desired response. There are two types of problems that neural networks handle: classification and regression. In a classification problem the network aims to use provided inputs to calculate the probabilities of a certain discrete output, for example cat/dog. Regression problems are more complex, here the system aims to predict a continuous value from the inputs.
 
 In a supervised learning problem, the neural network learns how to deal with the inputs by training on a set of training data. Using this, it aims to reduce the error by adjusting the weights of the nodes accordingly. In this tutorial we will walk through the process of predicting outcomes and adjusting the weights to improve the model. Not all concepts will be covered in depth in this tutorial.
