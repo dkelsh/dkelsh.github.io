@@ -34,19 +34,19 @@ This image shows a more indepth view of how h1 will be calculated:
 
 Calculating *total net input*:
 
-$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $
-
-$ net_{h_{1}} = w_{11}^{1} i_1 + w_{21}^{1} i_2 + b_1 $
-
-$ net_{h_{1}} = 0.15 * 0.05 + 0.20 * 0.10 + 0.35 = 0.3775 $
+>$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $
+>
+>$ net_{h_{1}} = w_{11}^{1} i_1 + w_{21}^{1} i_2 + b_1 $
+>
+>$ net_{h_{1}} = 0.15 * 0.05 + 0.20 * 0.10 + 0.35 = 0.3775 $
 
 Calculating *output*:
 
-$ out_{h_{i}} = \frac{1}{1+e^{net_{hi}}} $
-
-$ out_{h_{1}} = \frac{1}{1+e^{net_{h1}}} $
-
-$ out_{h_{1}} = \frac{1}{1+e^{0.3775}} = 0.593269992 $
+>$ out_{h_{i}} = \frac{1}{1+e^{net_{hi}}} $
+>
+>$ out_{h_{1}} = \frac{1}{1+e^{net_{h1}}} $
+>
+>$ out_{h_{1}} = \frac{1}{1+e^{0.3775}} = 0.593269992 $
 
 In order to calculate the output, we have used the 'sigmoid' activation function.
 
