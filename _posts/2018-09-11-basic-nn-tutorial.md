@@ -116,7 +116,7 @@ The backwards pass is known as backpropogation, the aim is to update all of the 
 
 **Updating $ {\bf w_{11}^{2}} $:**
 
-First of all we need to figure out how much a change in $ w{11}^{2}_ $ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w_{11}^{2}} $ 
+First of all we need to figure out how much a change in $ w_{11}^{2} $ affects the total error, this is: $ \frac{\partial E_{total}}{\partial w_{11}^{2}} $ 
 
 If we look at the diagram below it may be easier to see what is happening:
 
