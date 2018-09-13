@@ -62,11 +62,17 @@ In order to calculate the output, we have used the 'sigmoid' activation function
 
 Calculating *total net input*:
 
+<br>
+
 $ net_{h_{2}} = w_{12}^{1} i_1 + w_{22}^{1} i_2 + b_2 $
 
 $ net_{h_{2}} = 0.25 * 0.05 + 0.30 * 0.10 + 0.35 = 0.3925 $
 
+<br>
+
 Calculating *output*:
+
+<br>
 
 $ out_{h_{2}} = \frac{1}{1+e^{net_{h2}}} $
 
@@ -80,15 +86,23 @@ In order to calculate the values past the first hidden layer, we must use the va
 
 Calculating *total net input*:
 
+<br>
+
 $ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21}^{2} out_{h_{2}} + b_3 $
 
 $ net_{o_{1}} = 0.40 * 0.593269992 + 0.45 * 0.596884378 + 0.35 = 1.105905967 $
 
+<br>
+
 Calculating *output*:
+
+<br>
 
 $ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
 
 $ out_{o_{1}} = \frac{1}{1+e^{1.105905967}} = 0.75136507 $
+
+<br>
 
 **To Calculate o2:**
 
