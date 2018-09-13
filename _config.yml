@@ -8,7 +8,7 @@ permalink:           pretty
 # Setup
 title:               Daniel Kelshaw
 tagline:             'Engineering Student in Manchester, UK'
-description:         'Site dedicated to learning about data science and machine learning'
+description:         'Blog dedicated to learning data science/machine learning'
 url:                 
 baseurl:             'https://danielkelshaw.github.io'
 paginate:            5
