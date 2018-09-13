@@ -42,7 +42,6 @@ body {
 
 html {
   font-family: "PT Serif", Georgia, "Times New Roman", serif;
-  font-size: 16pt;
   color: #000000;
 }
 
@@ -79,7 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 38em) {
   .container {
-    max-width: 42rem; /* 32 */
+    max-width: 32rem; /* 32 */
   }
 }
 @media (min-width: 56em) {
