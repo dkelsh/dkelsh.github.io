@@ -11,7 +11,7 @@ tagline:             'Engineering Student in Manchester, UK'
 description:         'Blog dedicated to learning data science/machine learning'
 url:                 
 baseurl:             'https://danielkelshaw.github.io'
-paginate:            5
+paginate:            3
 
 # About/contact
 author:
