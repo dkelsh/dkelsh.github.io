@@ -148,11 +148,11 @@ The red lines show the steps we make in order to get from our error to the weigh
 
 How much does $ E_{total} $ changes based on $ out_{o1} $:
 
->$ E_{total} = \frac {1}{2}(ideal_{o1} - out{o1})^2 + \frac {1}{2}(ideal_{o2} - out{o2})^2 $
+>$ E_{total} = \frac {1}{2}(ideal_{o1} - out_{o1})^2 + \frac {1}{2}(ideal_{o2} - out_{o2})^2 $
 >
->$ \frac{\partial E_{total}}{\partial out_{o1}} = - \left( ideal_{o1} - out{o1} \right) $
+>$ \frac{\partial E_{total}}{\partial out_{o1}} = - \left( ideal_{o1} - out_{o1} \right) $
 >
->$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $\
+>$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $
 
 <br>
 
