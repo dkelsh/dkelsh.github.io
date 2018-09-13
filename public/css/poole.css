@@ -49,12 +49,12 @@ body {
 
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px; /* 16 */
+  font-size: 16px; /* 16 */
   line-height: 1.5;
 }
 @media (min-width: 38em) {
   html {
-    font-size: 14px; /* 20 */
+    font-size: 20px; /* 20 */
   }
 }
 
