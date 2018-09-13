@@ -276,7 +276,9 @@ By using the chain rule:
 >$ \frac{\partial E_{total}}{\partial w_{11}^{1}} = \left( \frac{\partial E_{o1}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial out_{h1}} + \frac{\partial E_{o2}}{\partial out_{o2}} \frac{\partial out_{o2}}{\partial net_{o2}} \frac{\partial net_{o2}}{\partial out_{h1}} \right) $
 >
 >$ \frac{\partial E_{total}}{\partial out_{h1}} = \frac{\partial E_{o1}}{\partial out_{h1}} + \frac{\partial E_{o2}}{\partial out_{h1}} $
->
+
+<br>
+
 >$ \frac{\partial E_{o1}}{\partial out_{h1}} = \frac{\partial E_{o1}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial out_{h1}} $
 >
 >$ \frac{\partial E_{o1}}{\partial out_{h1}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w_{11}^{2} $
@@ -354,7 +356,9 @@ To update the weight:
 >$ \frac{\partial E_{total}}{\partial w_{12}^{1}} = \frac{\partial E_{total}}{\partial out_{h2}} \frac{\partial out_{h2}}{\partial net_{h2}} \frac{\partial net_{h2}}{\partial w_{11}^{1}} $
 >
 >$ \frac{\partial E_{total}}{\partial out_{h2}} = \frac{\partial E_{o1}}{\partial out_{h2}} + \frac{\partial E_{o2}}{\partial out_{h2}} $
->
+
+<br>
+
 >$ \frac{\partial E_{o1}}{\partial out_{h2}} = \frac{\partial E_{o1}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial out_{h2}} $
 >
 >$ \frac{\partial E_{o1}}{\partial out_{h2}} = -\left(ideal_{o1} - out_{o1}\right) out_{o1} \left( 1 - out_{o1} \right) w_{21}^{2} $
@@ -368,9 +372,13 @@ To update the weight:
 >$ \frac{\partial E_{o2}}{\partial out_{h2}} = -\left(ideal_{o2} - out_{o2}\right) out_{o2} \left( 1 - out_{o1} \right) w_{22}^{2} $
 >
 >$ \frac{\partial E_{o2}}{\partial out_{h2}} = -(0.99 - 0.772928465) * 0.772928465(1 - 0.772928465) * 0.55 = -0.02095403013 $
->
+
+<br>
+
 >$ \frac{\partial E_{total}}{\partial out_{h2}} = 0.0623243528 - 0.02095403013 = 0.041370322 $
->
+
+<br>
+
 >$ \frac{\partial out_{h2}}{\partial net_{h2}} = out_{h2}(1 - out_{h2}) = 0.596884378(1 - 0.596884378) = 0.2406134173 $
 >
 >$ \frac{\partial net_{h2}}{\partial w_{12}^{1}} = i_1 = 0.05 $
