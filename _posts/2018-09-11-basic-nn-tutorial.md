@@ -16,7 +16,7 @@ In order to have some numbers to work with, here are the initial weights, the bi
 
 ![basic_nn_annotated](/images/basic_nn/tut_basic_nn_numbers.png)
 
-# The forward pass:
+## The forward pass:
 
 In the forward pass we predict the outputs based on the current architecture's weights and biases - in order to do this we need to work through the network in a systematic approach.
 
@@ -110,7 +110,7 @@ Calculating *output*:
 
 <br>
 
-# Calculating Total Error:
+## Calculating Total Error:
 
 In this tutorial we are going to use the 'mean-squared error' (mse) function to calculate the loss. In order to do this we calculate the loss from each output neuron and sum them:
 
@@ -124,11 +124,11 @@ In this tutorial we are going to use the 'mean-squared error' (mse) function to 
 
 <br>
 
-# The Backwards Pass:
+## The Backwards Pass:
 
 The backwards pass is known as backpropogation, the aim is to update all of the weights so that they cause the actual output of the network to be closer to the target output. In order to do this we need to minimise the error of the network as a whole.
 
-### The Output Layer:
+#### The Output Layer:
 
 **Updating $ {\bf w_{11}^{2}} $:**
 
