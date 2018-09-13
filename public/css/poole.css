@@ -52,9 +52,9 @@ html {
   font-size: 16px; /* 16 */
   line-height: 1.5;
 }
-@media (min-width: 38em) {
+@media (min-width: 48em) {
   html {
-    font-size: 40px; /* 20 */
+    font-size: 20px; /* 20, 38 as min-width */
   }
 }
 
