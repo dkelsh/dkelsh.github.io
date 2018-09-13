@@ -10,7 +10,7 @@ title:               Daniel Kelshaw
 tagline:             'Engineering Student in Manchester, UK'
 description:         'Site dedicated to learning about data science and machine learning'
 url:                 
-baseurl:             'https://dkelsh.github.io'
+baseurl:             'https://danielkelshaw.github.io'
 paginate:            5
 
 # About/contact
