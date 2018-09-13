@@ -34,7 +34,7 @@ This image shows a more indepth view of how h1 will be calculated:
 
 Calculating *total net input*:
 
-$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $
+$$ net_{h_{i}} = \left( \sum_{m}^{n} w_{mi} i_m \right) + b $$
 
 $ net_{h_{1}} = w_{11}^{1} i_1 + w_{21}^{1} i_2 + b_1 $
 
@@ -42,7 +42,7 @@ $ net_{h_{1}} = 0.15 * 0.05 + 0.20 * 0.10 + 0.35 = 0.3775 $
 
 Calculating *output*:
 
-$ out_{h_{i}} = \frac{1}{1+e^{net_{hi}}} $
+$$ out_{h_{i}} = \frac{1}{1+e^{net_{hi}}} $$
 
 $ out_{h_{1}} = \frac{1}{1+e^{net_{h1}}} $
 
@@ -134,7 +134,7 @@ $ E_{total} = \frac {1}{2}(ideal_{o1} - out{o1})^2 + \frac {1}{2}(ideal_{o2} - o
 
 $ \frac{\partial E_{total}}{\partial out_{o1}} = - \left( ideal_{o1} - out{o1} \right) $
 
-$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 
+$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $
 
 How much does $ out_{o1} $ changes with $ net_{o1} $:
 
@@ -201,7 +201,7 @@ $ \delta_{o2} = -(0.99 - 0.772928465) * 0.772928465(1 - 0.772928465) =  -0.03809
 From here we can easily calculate the new weight:
 
 $ \frac{\partial E_{total}}{\partial w_{12}^{2}} = \delta_{o2} \frac{\partial net_{o2}}{\partial 
-_{12}{2}} $
+_{12}^{2}} $
 
 $ \frac{\partial E_{total}}{\partial w_{12}^{2}} = \delta_{o2} out_{h_{1}} = -0.03809823661 * 0.593269992 = -0.022602541 $
 
