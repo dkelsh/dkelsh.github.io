@@ -16,7 +16,7 @@ In order to have some numbers to work with, here are the initial weights, the bi
 
 ![basic_nn_annotated](/images/basic_nn/tut_basic_nn_numbers.png)
 
-## The forward pass:
+# The forward pass:
 
 In the forward pass we predict the outputs based on the current architecture's weights and biases - in order to do this we need to work through the network in a systematic approach.
 
@@ -78,21 +78,17 @@ In order to calculate the values past the first hidden layer, we must use the va
 
 Calculating *total net input*:
 
-<br>
-
-$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21}^{2} out_{h_{2}} + b_3 $
-
-$ net_{o_{1}} = 0.40 * 0.593269992 + 0.45 * 0.596884378 + 0.35 = 1.105905967 $
+>$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21}^{2} out_{h_{2}} + b_3 $
+>
+>$ net_{o_{1}} = 0.40 * 0.593269992 + 0.45 * 0.596884378 + 0.35 = 1.105905967 $
 
 <br>
 
 Calculating *output*:
 
-<br>
-
-$ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
-
-$ out_{o_{1}} = \frac{1}{1+e^{1.105905967}} = 0.75136507 $
+>$ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
+>
+>$ out_{o_{1}} = \frac{1}{1+e^{1.105905967}} = 0.75136507 $
 
 <br>
 
@@ -100,29 +96,35 @@ $ out_{o_{1}} = \frac{1}{1+e^{1.105905967}} = 0.75136507 $
 
 Calculating *total net input*:
 
-$ net_{o_{2}} = w_{12}^{2} out_{h_{1}} + w_{22}^{2} out_{h_{2}} + b_3 $
+>$ net_{o_{2}} = w_{12}^{2} out_{h_{1}} + w_{22}^{2} out_{h_{2}} + b_3 $
+>
+>$ net_{o_{2}} = 0.50 * 0.593269992 + 0.45 * 0.596884378 + 0.55 = 1.224921404 $
 
-$ net_{o_{2}} = 0.50 * 0.593269992 + 0.45 * 0.596884378 + 0.55 = 1.224921404 $
+<br>
 
 Calculating *output*:
 
-$ out_{o_{2}} = \frac{1}{1+e^{out_{o2}}} $
+>$ out_{o_{2}} = \frac{1}{1+e^{out_{o2}}} $
+>
+>$ out_{o_{2}} = \frac{1}{1+e^{1.224921404}} = 0.772928465 $
 
-$ out_{o_{2}} = \frac{1}{1+e^{1.224921404}} = 0.772928465 $
+<br>
 
-## Calculating Total Error:
+# Calculating Total Error:
 
 In this tutorial we are going to use the 'mean-squared error' (mse) function to calculate the loss. In order to do this we calculate the loss from each output neuron and sum them:
 
-$ E_{total} = \sum \frac {1}{2}(ideal - out)^2 $
+>$ E_{total} = \sum \frac {1}{2}(ideal - out)^2 $
+>
+>$ E_{o1} = \frac {1}{2}(0.01 - 0.75136507)^2 = 0.274811083 $
+>
+>$ E_{o2} = \frac {1}{2}(0.99 - 0.772928465)^2 = 0.023560026 $
+>
+>$ E_{total} = E_{o1} + E_{o2} = 0.274811083 + 0.023560026 = 0.298371109 $
 
-$ E_{o1} = \frac {1}{2}(0.01 - 0.75136507)^2 = 0.274811083 $
+<br>
 
-$ E_{o2} = \frac {1}{2}(0.99 - 0.772928465)^2 = 0.023560026 $
-
-$ E_{total} = E_{o1} + E_{o2} = 0.274811083 + 0.023560026 = 0.298371109 $
-
-## The Backwards Pass:
+# The Backwards Pass:
 
 The backwards pass is known as backpropogation, the aim is to update all of the weights so that they cause the actual output of the network to be closer to the target output. In order to do this we need to minimise the error of the network as a whole.
 
@@ -138,41 +140,51 @@ If we look at the diagram below it may be easier to see what is happening:
 
 By using the chain rule:
 
-$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
 
 The red lines show the steps we make in order to get from our error to the weight.
 
+<br>
+
 How much does $ E_{total} $ changes based on $ out_{o1} $:
 
-$ E_{total} = \frac {1}{2}(ideal_{o1} - out{o1})^2 + \frac {1}{2}(ideal_{o2} - out{o2})^2 $
+>$ E_{total} = \frac {1}{2}(ideal_{o1} - out{o1})^2 + \frac {1}{2}(ideal_{o2} - out{o2})^2 $
+>
+>$ \frac{\partial E_{total}}{\partial out_{o1}} = - \left( ideal_{o1} - out{o1} \right) $
+>
+>$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $\
 
-$ \frac{\partial E_{total}}{\partial out_{o1}} = - \left( ideal_{o1} - out{o1} \right) $
-
-$ \frac{\partial E_{total}}{\partial out_{o1}} = -(0.01 - 0.75136507) = 0.74136507 $
+<br>
 
 How much does $ out_{o1} $ changes with $ net_{o1} $:
 
-$ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
+>$ out_{o_{1}} = \frac{1}{1+e^{out_{o1}}} $
+>
+>$ \frac{\partial out_{o1}}{\partial net_{o1}} = out_{o1} \left( 1 - out_{o1} \right) $
+>
+>$ \frac{\partial out_{o1}}{\partial net_{o1}} = 0.75136507(1 - 0.75136507) = 0.186815602 $
 
-$ \frac{\partial out_{o1}}{\partial net_{o1}} = out_{o1} \left( 1 - out_{o1} \right) $
-
-$ \frac{\partial out_{o1}}{\partial net_{o1}} = 0.75136507(1 - 0.75136507) = 0.186815602 $
+<br>
 
 How much does $ net_{o1} $ change with $ w_{11}^{2} $:
 
-$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21} out_{h_{2}} + b_3 $
+>$ net_{o_{1}} = w_{11}^{2} out_{h_{1}} + w_{21} out_{h_{2}} + b_3 $
+>
+>$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = out_{h_{1}} $
+>
+>$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = 0.593269992 $
 
-$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = out_{h_{1}} $
-
-$ \frac{\partial net_{o1}}{\partial w_{11}^{2}} = 0.593269992 $
+<br>
 
 We can finally combine all of these terms:
 
-$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = \frac{\partial E_{total}}{\partial out_{o1}} \frac{\partial out_{o1}}{\partial net_{o1}} \frac{\partial net_{o1}}{\partial w_{11}^{2}} $
+>
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = - \left( ideal_{o1} - out{o1} \right) out_{o1} \left( 1 - out_{o1} \right) out_{h_{1}} $
+>
+>$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = 0.74136507 * 0.186815602 * 0.593269992 = 0.0821671041 $
 
-$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = - \left( ideal_{o1} - out{o1} \right) out_{o1} \left( 1 - out_{o1} \right) out_{h_{1}} $
-
-$ \frac{\partial E_{total}}{\partial w_{11}^{2}} = 0.74136507 * 0.186815602 * 0.593269992 = 0.0821671041 $
+<br>
 
 In order to speed up the process we can assign:
 
